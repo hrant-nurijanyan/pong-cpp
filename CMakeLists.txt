@@ -29,6 +29,11 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 add_subdirectory(${GLFW_DIR})
 
 # Game
-add_executable(pong-cpp ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+add_executable(pong-cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp 
+	${CMAKE_CURRENT_SOURCE_DIR}/src/platform/GLFWLibrary.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/src/platform/Window.cpp
+)
 
+target_include_directories(pong-cpp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(pong-cpp PRIVATE pong_glad glfw)
